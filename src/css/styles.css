@@ -51,4 +51,29 @@ button[type="submit"]:focus {
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
+    margin: 36px 150px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-card {
+    width: 360px;
+    height: 200px;
+    border: 1px solid #808080;
+}
+
+.card-image {
+    display: block;
+    height: 152px;
+}
+
+.card-caption {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-tag {
+    text-align: center;
 }
