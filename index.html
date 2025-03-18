@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-Bd5OyJDH.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-miJmEu1V.js">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-DumFYO8Z.css">
     <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-BAQqnoIR.css">
   </head>
@@ -22,29 +22,31 @@
       <button type="submit">Search</button>
     </form>
     <ul class="gallery">
-      <li class="gallery-card">
-        <img
-          src="https://pixabay.com/get/ga433cc6085266badf98c0dd4d12f43f9e46c8925bec9f51b4d35717ef442108b6ab3709e53e6c46fea08994534ef98274a910f8ee314a99cad07cea06adcf52d_640.jpg"
-          alt=""
-          class="card-image"
-          width="360"
-          height="152"
-        />
-        <ul class="card-caption">
-          <li class="image-tag">
-            <p>Likes<br />1000</p>
-          </li>
-          <li class="image-tag">
-            <p>Views<br />1000</p>
-          </li>
-          <li class="image-tag">
-            <p>Comments<br />1000</p>
-          </li>
-          <li class="image-tag">
-            <p>Downloads<br />1000</p>
-          </li>
-        </ul>
-      </li>
+      <template>
+        <li class="gallery-card">
+          <img
+            src="https://pixabay.com/get/ga433cc6085266badf98c0dd4d12f43f9e46c8925bec9f51b4d35717ef442108b6ab3709e53e6c46fea08994534ef98274a910f8ee314a99cad07cea06adcf52d_640.jpg"
+            alt=""
+            class="card-image"
+            width="360"
+            height="152"
+          />
+          <ul class="card-caption">
+            <li class="image-tag">
+              <p>Likes<br />1000</p>
+            </li>
+            <li class="image-tag">
+              <p>Views<br />1000</p>
+            </li>
+            <li class="image-tag">
+              <p>Comments<br />1000</p>
+            </li>
+            <li class="image-tag">
+              <p>Downloads<br />1000</p>
+            </li>
+          </ul>
+        </li>
+      </template>
     </ul>
   </body>
 </html>
