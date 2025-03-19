@@ -2,6 +2,7 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 export const gallery = document.querySelector(".gallery");
+const loader = document.querySelector(".gallery+span");
 const lightbox = new SimpleLightbox(".gallery li a", {
     captionsData: "alt",
     captionDelay: 250,
@@ -21,7 +22,11 @@ export default function createMarkup(images) {
             </ul>
           </a>
         </li>`;
-        }).join("");
-    gallery.insertAdjacentHTML("beforeend", markup);
+    }).join("");
+    setTimeout(() => {
+        loader.classList.toggle("loader");
+        return gallery.insertAdjacentHTML("beforeend", markup);
+    }, 1000);
+    loader.classList.toggle("loader");
     lightbox.refresh();
 }

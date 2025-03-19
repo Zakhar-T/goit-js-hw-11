@@ -3,6 +3,7 @@ import createMarkup from "./js/render-functions";
 import { gallery } from "./js/render-functions";
 
 const form = document.querySelector(".form");
+
 const searchParams = {
     key: "49370503-7e4a3b73ee503433174e66c4b",
     q: "",
