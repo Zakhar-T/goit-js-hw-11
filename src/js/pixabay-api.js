@@ -1,28 +1,23 @@
 import axios from "axios";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
 axios.defaults.baseURL = "https://pixabay.com/api/";
-//axios.defaults.headers.common["x-api-key"] = "49370503-7e4a3b73ee503433174e66c4b";
 
-const form = document.querySelector(".form");
-const gallery = document.querySelector(".gallery");
-const searchParams = new URLSearchParams({
-    key: "49370503-7e4a3b73ee503433174e66c4b",
-    q: "cats",
-    image_type: "photo",
-    orientation: "horizontal",
-    safesearch: true,
-});
-
-function fetchPhotos() {
-    axios.get("?key=49370503-7e4a3b73ee503433174e66c4b")
-        .then(response => { console.log(response.data) })
+export default function fetchPhotos(searchParams, createMarkup) {
+    return axios.get(`?${new URLSearchParams(searchParams)}`)
+        .then(response => {
+            if (response.data.totalHits === 0) {
+                showNotification();
+                return
+            }
+            return createMarkup(response.data.hits) })
         .catch(error => console.log(error));
 }
 
-axios.get("?key=49370503-7e4a3b73ee503433174e66c4b")
-        .then(response => { console.log(response.data) })
-        .catch(error => console.log(error));
-
-fetchPhotos();
-
-console.log("");
+function showNotification() {
+    iziToast.error({
+        message: "Sorry, there are no images matching your search query. Please try again!",
+        position: "topRight",
+    });
+}
