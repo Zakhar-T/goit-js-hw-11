@@ -4,14 +4,23 @@ import "izitoast/dist/css/iziToast.min.css";
 
 axios.defaults.baseURL = "https://pixabay.com/api/";
 
-export default function fetchPhotos(searchParams, createMarkup) {
-    return axios.get(`?${new URLSearchParams(searchParams)}`)
+const searchParams = {
+    key: "49370503-7e4a3b73ee503433174e66c4b",
+    image_type: "photo",
+    orientation: "horizontal",
+    per_page: 9,
+    safesearch: true,
+};
+
+export default function fetchPhotos(searchQuery, createMarkup) {
+    searchParams.q = searchQuery;
+    axios.get(`?${new URLSearchParams(searchParams)}`)
         .then(response => {
             if (response.data.totalHits === 0) {
                 showNotification();
                 return
             }
-            return createMarkup(response.data.hits) })
+            createMarkup(response.data.hits) })
         .catch(error => console.log(error));
 }
 
