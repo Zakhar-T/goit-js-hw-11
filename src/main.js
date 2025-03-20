@@ -1,4 +1,5 @@
 import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 import fetchPhotos from "./js/pixabay-api";
 import createMarkup from "./js/render-functions";
 import { gallery, loader } from "./js/render-functions";
