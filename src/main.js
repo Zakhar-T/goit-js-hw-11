@@ -4,6 +4,7 @@ import createMarkup from "./js/render-functions";
 import { gallery, loader } from "./js/render-functions";
 
 const form = document.querySelector(".form");
+loader.classList.toggle("loader");
 
 form.addEventListener("submit", renderPhotos);
 
