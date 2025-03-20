@@ -1,6 +1,7 @@
 import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+import { loader } from "./render-functions";
 
 axios.defaults.baseURL = "https://pixabay.com/api/";
 
@@ -17,11 +18,15 @@ export default function fetchPhotos(searchQuery, createMarkup) {
     axios.get(`?${new URLSearchParams(searchParams)}`)
         .then(response => {
             if (response.data.totalHits === 0) {
+                loader.classList.toggle("loader");
                 showNotification();
                 return
             }
             createMarkup(response.data.hits) })
-        .catch(error => console.log(error));
+        .catch(() => {
+            loader.classList.toggle("loader");
+            loader.innerHTML = "Oops... something went wrong...";
+        });
 }
 
 function showNotification() {

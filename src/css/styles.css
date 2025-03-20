@@ -78,6 +78,10 @@ button[type="submit"]:focus {
     text-align: center;
 }
 
+.gallery+span {
+    margin: 0 auto;
+}
+
 .loader {
     margin: 0 auto;
     position: relative;
