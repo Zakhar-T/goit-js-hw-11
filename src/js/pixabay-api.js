@@ -1,32 +1,18 @@
 import axios from "axios";
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
 
 axios.defaults.baseURL = "https://pixabay.com/api/";
 
 const searchParams = {
-    key: "49370503-7e4a3b73ee503433174e66c4b",
+    key: "49370503-7e4a3b73ee503433174e66c4",
     image_type: "photo",
     orientation: "horizontal",
     per_page: 9,
     safesearch: true,
 };
 
-export default function fetchPhotos(searchQuery, createMarkup) {
+export default function fetchPhotos(searchQuery) {
     searchParams.q = searchQuery;
-    axios.get(`?${new URLSearchParams(searchParams)}`)
-        .then(response => {
-            if (response.data.totalHits === 0) {
-                showNotification();
-                return
-            }
-            createMarkup(response.status, response.data.hits) })
-        .catch(error => createMarkup(error.status));
-}
-
-function showNotification() {
-    iziToast.error({
-        message: "Sorry, there are no images matching your search query. Please try again!",
-        position: "topRight",
-    });
-}
+    return axios.get(`?${new URLSearchParams(searchParams)}`)
+        .then(response => response)
+        .catch(error => error);
+};

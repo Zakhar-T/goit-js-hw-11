@@ -17,9 +17,24 @@ function renderPhotos(event) {
             message: "Search field must not be empty!",
             position: "topRight",
         });
-        return
+        return;
     };
     gallery.innerHTML = "";
     loader.classList.toggle("loader");
-    fetchPhotos(searchQuery, createMarkup);
-}
+    fetchPhotos(searchQuery)
+        .then(response => {
+            if (response.data.totalHits === 0) {
+                loader.classList.toggle("loader");
+                iziToast.error({
+                    message: "Sorry, there are no images matching your search query. Please try again!",
+                    position: "topRight",
+                });
+                return;
+            };
+            createMarkup(response.data.hits);
+        })
+        .catch(() => {
+            loader.classList.toggle("loader");
+            loader.innerHTML = "Oops... something went wrong";
+        });
+};

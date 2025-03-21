@@ -8,12 +8,7 @@ const lightbox = new SimpleLightbox(".gallery li a", {
     captionDelay: 250,
 });
 
-export default function createMarkup(status, images) {
-  if (status !== 200) {
-    loader.classList.toggle("loader");
-    loader.innerHTML = "Oops... something went wrong...";
-    return
-  }
+export default function createMarkup(images) {
     const markup = images.map(image => {
         const { webformatURL, tags, largeImageURL, likes, views, comments, downloads } = image;
         return `<li class="gallery-card">
